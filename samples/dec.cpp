@@ -11,16 +11,13 @@ int main()
   std::cout << "=======================\n\n";
 
   // Test basic decoding
-  std::vector<std::byte> encoded_data{
-    std::byte{0x03}, std::byte{0x11}, std::byte{0x22}, 
-    std::byte{0x02}, std::byte{0x33}, std::byte{0x00}
-  };
+  std::vector<std::byte> encoded_data{ std::byte{ 0x03 }, std::byte{ 0x11 }, std::byte{ 0x22 },
+                                       std::byte{ 0x02 }, std::byte{ 0x33 }, std::byte{ 0x00 } };
 
   std::cout << "Encoded data: ";
   for (auto b : encoded_data)
   {
-    std::cout << std::hex << std::setw(2) << std::setfill('0') 
-              << static_cast<unsigned>(b) << " ";
+    std::cout << std::hex << std::setw(2) << std::setfill('0') << static_cast<unsigned>(b) << " ";
   }
   std::cout << "\n";
 
@@ -45,8 +42,7 @@ int main()
   std::cout << "Decoded data: ";
   for (auto b : decoded_data)
   {
-    std::cout << std::hex << std::setw(2) << std::setfill('0') 
-              << static_cast<unsigned>(b) << " ";
+    std::cout << std::hex << std::setw(2) << std::setfill('0') << static_cast<unsigned>(b) << " ";
   }
   std::cout << "\n\n";
 
@@ -55,16 +51,16 @@ int main()
 
   // Demonstrate round-trip encoding/decoding
   std::cout << "Round-trip test:\n";
-  std::vector<std::byte> original{
-    std::byte{0xAA}, std::byte{0x00}, std::byte{0xBB}, 
-    std::byte{0x00}, std::byte{0xCC}
-  };
+  std::vector<std::byte> original{ std::byte{ 0xAA },
+                                   std::byte{ 0x00 },
+                                   std::byte{ 0xBB },
+                                   std::byte{ 0x00 },
+                                   std::byte{ 0xCC } };
 
   std::cout << "Original:     ";
   for (auto b : original)
   {
-    std::cout << std::hex << std::setw(2) << std::setfill('0') 
-              << static_cast<unsigned>(b) << " ";
+    std::cout << std::hex << std::setw(2) << std::setfill('0') << static_cast<unsigned>(b) << " ";
   }
   std::cout << "\n";
 
@@ -79,8 +75,7 @@ int main()
   std::cout << "Encoded:      ";
   for (auto b : encoded)
   {
-    std::cout << std::hex << std::setw(2) << std::setfill('0') 
-              << static_cast<unsigned>(b) << " ";
+    std::cout << std::hex << std::setw(2) << std::setfill('0') << static_cast<unsigned>(b) << " ";
   }
   std::cout << "\n";
 
@@ -99,8 +94,7 @@ int main()
     }
     else
     {
-      std::cout << "Decode error during roundtrip: " 
-                << static_cast<int>(frame_result.error()) << "\n";
+      std::cout << "Decode error during roundtrip: " << static_cast<int>(frame_result.error()) << "\n";
       return 1;
     }
   }
@@ -108,8 +102,7 @@ int main()
   std::cout << "Roundtrip:    ";
   for (auto b : roundtrip)
   {
-    std::cout << std::hex << std::setw(2) << std::setfill('0') 
-              << static_cast<unsigned>(b) << " ";
+    std::cout << std::hex << std::setw(2) << std::setfill('0') << static_cast<unsigned>(b) << " ";
   }
   std::cout << "\n";
 
@@ -131,16 +124,15 @@ int main()
   // Demonstrate multiple frame decoding
   std::cout << "Multiple frame decoding:\n";
   std::vector<std::byte> multi_encoded{
-    std::byte{0x03}, std::byte{0x11}, std::byte{0x22}, std::byte{0x00},  // Frame 1
-    std::byte{0x01}, std::byte{0x00},                                    // Frame 2 (single zero)
-    std::byte{0x04}, std::byte{0x33}, std::byte{0x44}, std::byte{0x55}, std::byte{0x00}  // Frame 3
+    std::byte{ 0x03 }, std::byte{ 0x11 }, std::byte{ 0x22 }, std::byte{ 0x00 }, // Frame 1
+    std::byte{ 0x01 }, std::byte{ 0x00 },                                       // Frame 2 (single zero)
+    std::byte{ 0x04 }, std::byte{ 0x33 }, std::byte{ 0x44 }, std::byte{ 0x55 }, std::byte{ 0x00 } // Frame 3
   };
 
   std::cout << "Encoded:      ";
   for (auto b : multi_encoded)
   {
-    std::cout << std::hex << std::setw(2) << std::setfill('0') 
-              << static_cast<unsigned>(b) << " ";
+    std::cout << std::hex << std::setw(2) << std::setfill('0') << static_cast<unsigned>(b) << " ";
   }
   std::cout << "\n";
 
@@ -154,8 +146,7 @@ int main()
       auto frame = *frame_result;
       for (auto b : frame)
       {
-        std::cout << std::hex << std::setw(2) << std::setfill('0') 
-                  << static_cast<unsigned>(b) << " ";
+        std::cout << std::hex << std::setw(2) << std::setfill('0') << static_cast<unsigned>(b) << " ";
       }
       if (frame.empty())
       {

@@ -1,0 +1,44 @@
+---
+Language: Cpp
+BasedOnStyle: LLVM
+Standard: c++20
+
+BreakBeforeBraces: Custom
+BraceWrapping:
+  AfterClass: true
+  AfterControlStatement: true  
+  AfterEnum: true
+  AfterFunction: true
+  AfterNamespace: true
+  AfterStruct: true
+  BeforeCatch: true
+  BeforeElse: true
+
+Cpp11BracedListStyle: false
+
+IndentWidth: 2
+UseTab: Never
+NamespaceIndentation: All
+
+BreakConstructorInitializers: BeforeComma
+AllowAllConstructorInitializersOnNextLine: false
+ConstructorInitializerAllOnOneLineOrOnePerLine: true
+
+BinPackParameters: false
+BinPackArguments: false
+AlignAfterOpenBracket: BlockIndent
+AllowAllArgumentsOnNextLine: false
+AllowAllParametersOfDeclarationOnNextLine: false
+
+ExperimentalAutoDetectBinPacking: false
+AllowShortBlocksOnASingleLine: Never
+PackConstructorInitializers: Never
+
+RemoveBracesLLVM: false
+InsertBraces: true
+
+ColumnLimit: 110
+AllowShortFunctionsOnASingleLine: None
+AllowShortIfStatementsOnASingleLine: false
+AllowShortLoopsOnASingleLine: false
+AlwaysBreakTemplateDeclarations: Yes

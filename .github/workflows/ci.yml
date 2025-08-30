@@ -1,0 +1,42 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Install g++-14
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y g++-14
+        
+    - name: Set g++-14 as default
+      run: |
+        sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-14 100
+        
+    - name: Verify compiler version
+      run: |
+        g++ --version
+        
+    - name: Build samples
+      run: make samples
+      
+    - name: Build tests
+      run: make tests
+      
+    - name: Run tests
+      run: make test
+      
+    - name: Check code formatting
+      run: |
+        sudo apt-get install -y clang-format
+        make check-format
